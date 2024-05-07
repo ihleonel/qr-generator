@@ -19,7 +19,6 @@ function App() {
       })
       const data = await response.json()
       setQrcode(`data:image/svg+xml;base64,${data.qrcode}`)
-      console.log(data)
     } catch (error) {
       console.error(error)
     }
@@ -37,7 +36,15 @@ function App() {
       >
         Generate
       </button>
-      <img src={qrcode} alt="QRCode" width="200" height="200"/>
+      {qrcode !== null &&
+        <img
+          src={qrcode}
+          alt="QRCode"
+          width="200"
+          height="200"
+        />
+      }
+
     </>
   )
 }
