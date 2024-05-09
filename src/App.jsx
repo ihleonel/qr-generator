@@ -18,6 +18,7 @@ function App() {
         }
       })
       const data = await response.json()
+      console.log(data)
       setQrcode(`data:image/svg+xml;base64,${data.qrcode}`)
     } catch (error) {
       console.error(error)
