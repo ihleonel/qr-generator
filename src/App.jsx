@@ -26,19 +26,22 @@ function App() {
   }
   return (
     <>
-      <h1>Generate QR</h1>
+      <h1 className='title'>Generate QR</h1>
       <input
+        className='input'
         type="text"
         value={url}
         onChange={e => setUrl(e.target.value)}
       />
       <button
+        className='submit'
         onClick={submit}
       >
         Generate
       </button>
       {qrcode !== null &&
         <img
+          className='result'
           src={qrcode}
           alt="QRCode"
           width="200"

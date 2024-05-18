@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 #root {
@@ -12,4 +13,21 @@
 
   color: white;
   background: #3e3e3e;
+
+  font-family: 'Onest Variable', sans-serif;
+}
+
+.input {
+  height: 2em;
+  width: 200px;
+}
+
+.submit {
+  height: 2em;
+  width: 200px;
+}
+
+.result {
+  width: 200px;
+  background: white;
 }
