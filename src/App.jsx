@@ -4,11 +4,13 @@ import './App.css'
 function App() {
   const [url, setUrl] = useState('')
   const [qrcode, setQrcode] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const submit = async () => {
     if (url === '') {
       return
     }
+    setIsLoading(true)
     try {
       const response = await fetch('http://localhost:8000/generate', {
         method: "POST",
@@ -22,6 +24,8 @@ function App() {
       setQrcode(`data:image/svg+xml;base64,${data.qrcode}`)
     } catch (error) {
       console.error(error)
+    } finally {
+      setIsLoading(false)
     }
   }
   return (
@@ -39,6 +43,9 @@ function App() {
       >
         Generate
       </button>
+      {isLoading &&
+        <span>Loading ...</span>
+      }
       {qrcode !== null &&
         <img
           className='result'
