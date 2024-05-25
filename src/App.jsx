@@ -3,15 +3,15 @@ import useFetch from './Hooks/useFetch'
 import './App.css'
 
 function App() {
-  const [url, setUrl] = useState('')
+  const [payload, setPayload] = useState('')
   const [qrcode, setQrcode] = useState(null)
   const { fetching, isLoading } = useFetch()
 
   const submit = async () => {
-    if (url === '') {
+    if (payload === '') {
       return
     }
-    const data = await fetching('http://localhost:8000/generate')
+    const data = await fetching('http://localhost:8000/generate', payload)
     setQrcode(`data:image/svg+xml;base64,${data.qrcode}`)
 
   }
@@ -21,8 +21,8 @@ function App() {
       <input
         className='input'
         type="text"
-        value={url}
-        onChange={e => setUrl(e.target.value)}
+        value={payload}
+        onChange={e => setPayload(e.target.value)}
       />
       <button
         className='submit'

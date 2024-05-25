@@ -10,15 +10,15 @@ from base64 import b64encode
 
 @api_view(['POST'])
 def generate(request: Request) -> Response:
-    url: str | None = request.data.get('url', None)
+    payload: str | None = request.data.get('payload', None)
 
-    if url == 'prueba':
+    if payload == 'prueba':
         return Response(
             data={'errors': 'campo'},
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    qrcode: QRCode = make_qr(url)
+    qrcode: QRCode = make_qr(payload)
     buffer = BytesIO()
     qrcode.save(out=buffer, kind='svg', border=0)
     buffer.seek(0)
