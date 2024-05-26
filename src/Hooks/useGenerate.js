@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-const useFetch = () => {
+const useGenerate = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
-  const fetching = async (url, payload) => {
+  const generate = async (url, payload) => {
     setIsLoading(true)
     try {
       const response = await fetch(url, {
@@ -21,7 +21,7 @@ const useFetch = () => {
       setIsLoading(false)
     }
   }
-  return {fetching, isLoading, error}
+  return {generate, isLoading, error}
 }
 
-export default useFetch
+export default useGenerate

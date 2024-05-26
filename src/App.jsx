@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import useFetch from './Hooks/useFetch'
+import useGenerate from './Hooks/useGenerate'
 import './App.css'
 
 function App() {
   const [payload, setPayload] = useState('')
   const [qrcode, setQrcode] = useState(null)
-  const { fetching, isLoading } = useFetch()
+  const { generate, isLoading } = useGenerate()
 
   const submit = async () => {
     if (payload === '') {
       return
     }
-    const data = await fetching('http://localhost:8000/generate', payload)
+    const data = await generate('http://localhost:8000/generate', payload)
     setQrcode(`data:image/svg+xml;base64,${data.qrcode}`)
 
   }
