@@ -1,8 +1,16 @@
 version: '3.8'
 
 services:
-  django:
-    build: ./docker/django
-    command: python manage.py runserver 0.0.0.0:8000
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/code
     ports:
-      - 8000:8000
+      - "8000:8000"
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/src
+      - /src/node_modules
+    ports:
+      - "5173:5173"

@@ -8,5 +8,5 @@ Given a link or string as parameter, this page generate a QR Code.
 - [x] Add funcionalities
 - [x] Add styles
 - [x] Add django
-- [ ] Dockering this application
+- [x] Dockering this application
 - [ ] Feedback errors
