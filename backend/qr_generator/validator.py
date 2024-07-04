@@ -1,5 +1,6 @@
 from rest_framework.request import Request
 
+
 class Validator:
     data = None
     errors = []
