@@ -14,4 +14,4 @@ class Validator:
         elif self.data.strip() == '':
             self.errors.append('Is empty')
 
-        return len(self.errors)
+        return len(self.errors) == 0

@@ -15,6 +15,8 @@ def generate(request: Request) -> Response:
             validator.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
-    service = Service(validator.data)
-    base64_data = service()
+
+    service = Service()
+    base64_data = service(validator.data)
+
     return Response(data={'qrcode': base64_data})

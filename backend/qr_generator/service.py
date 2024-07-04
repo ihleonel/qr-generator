@@ -7,11 +7,8 @@ from base64 import b64encode
 class Service:
     data = None
 
-    def __init__(self, data):
-        self.data = data
-
-    def __call__(self) -> bytes:
-        qrcode: QRCode = make_qr(self.data)
+    def __call__(self, data) -> bytes:
+        qrcode: QRCode = make_qr(data)
         buffer = BytesIO()
         qrcode.save(out=buffer, kind='svg', border=0)
         buffer.seek(0)
