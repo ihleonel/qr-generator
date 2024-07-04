@@ -6,19 +6,20 @@ from segno import make_qr
 from segno import QRCode
 from io import BytesIO
 from base64 import b64encode
+from .validator import Validator
 
 
 @api_view(['POST'])
 def generate(request: Request) -> Response:
-    payload: str | None = request.data.get('payload', None)
+    validator = Validator(request)
 
-    if payload == 'prueba':
+    if not validator.is_valid():
         return Response(
-            data={'errors': 'campo'},
+            validator.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    qrcode: QRCode = make_qr(payload)
+    qrcode: QRCode = make_qr(validator.data)
     buffer = BytesIO()
     qrcode.save(out=buffer, kind='svg', border=0)
     buffer.seek(0)
