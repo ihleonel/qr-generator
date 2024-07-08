@@ -22,8 +22,8 @@ const useGenerate = () => {
       if (response.status === 400) {
         setError(json.errors)
       }
-      if (response.status === 200) {
-        setData((preData) => [...preData, json])
+      if (response.status === 201) {
+        setData(json)
       }
     } catch (err) {
       console.error(err)

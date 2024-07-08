@@ -22,4 +22,4 @@ def generate(request: Request) -> Response:
     service = Service()
     base64_data = service(validator.valid)
 
-    return Response(data={'qrcode': base64_data})
+    return Response({'qrcode': base64_data}, status=status.HTTP_201_CREATED)
