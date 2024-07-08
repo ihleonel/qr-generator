@@ -17,6 +17,6 @@ def generate(request: Request) -> Response:
         )
 
     service = Service()
-    base64_data = service(validator.data)
+    base64_data = service(validator.valid)
 
     return Response(data={'qrcode': base64_data})

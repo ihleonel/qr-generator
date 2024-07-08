@@ -5,10 +5,9 @@ from base64 import b64encode
 
 
 class Service:
-    data = None
 
-    def __call__(self, data) -> bytes:
-        qrcode: QRCode = make_qr(data)
+    def __call__(self, data: dict) -> bytes:
+        qrcode: QRCode = make_qr(data['payload'])
         buffer = BytesIO()
         qrcode.save(out=buffer, kind='svg', border=0)
         buffer.seek(0)

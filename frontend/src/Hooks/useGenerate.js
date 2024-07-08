@@ -16,7 +16,7 @@ const useGenerate = () => {
       const data = await response.json()
       return data
     } catch (error) {
-      setError(error)
+      console.error(error)
     } finally {
       setIsLoading(false)
     }
