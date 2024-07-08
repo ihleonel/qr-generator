@@ -8,7 +8,8 @@ const useGenerate = () => {
     if (isLoading === true) {
       return;
     }
-
+    setError(null)
+    setData(null)
     setIsLoading(true)
     try {
       const response = await fetch(url, {
@@ -31,6 +32,7 @@ const useGenerate = () => {
       setIsLoading(false)
     }
   }
+
   return {data, isLoading, error, generate}
 }
 

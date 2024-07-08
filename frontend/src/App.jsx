@@ -4,16 +4,10 @@ import './App.css'
 
 function App() {
   const [payload, setPayload] = useState('')
-  const [qrcode, setQrcode] = useState(null)
   const { data, isLoading, error, generate } = useGenerate()
 
-  const submit = async () => {
-    await generate('http://localhost:8000/generate', payload)
-
-    if (error !== null) {
-      return
-    }
-    setQrcode(`data:image/svg+xml;base64,${data.qrcode}`)
+  const submit = () => {
+    generate('http://localhost:8000/generate', payload)
   }
   return (
     <>
@@ -34,10 +28,10 @@ function App() {
       {isLoading &&
         <span>Loading ...</span>
       }
-      {qrcode !== null &&
+      {data !== null &&
         <img
           className='result'
-          src={qrcode}
+          src={`data:image/svg+xml;base64,${data.qrcode}`}
           alt="QRCode"
           width="200"
           height="200"
