@@ -5,15 +5,15 @@ import './App.css'
 function App() {
   const [payload, setPayload] = useState('')
   const [qrcode, setQrcode] = useState(null)
-  const { generate, isLoading } = useGenerate()
+  const { data, isLoading, error, generate } = useGenerate()
 
   const submit = async () => {
-    if (payload === '') {
+    await generate('http://localhost:8000/generate', payload)
+
+    if (error !== null) {
       return
     }
-    const data = await generate('http://localhost:8000/generate', payload)
     setQrcode(`data:image/svg+xml;base64,${data.qrcode}`)
-
   }
   return (
     <>
@@ -24,6 +24,7 @@ function App() {
         value={payload}
         onChange={e => setPayload(e.target.value)}
       />
+      <small>{error?.payload}</small>
       <button
         className='submit'
         onClick={submit}

@@ -3,7 +3,12 @@ import { useState } from "react"
 const useGenerate = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [data, setData] = useState(null)
   const generate = async (url, payload) => {
+    if (isLoading === true) {
+      return;
+    }
+
     setIsLoading(true)
     try {
       const response = await fetch(url, {
@@ -13,15 +18,20 @@ const useGenerate = () => {
           'Content-Type': 'application/json'
         }
       })
-      const data = await response.json()
-      return data
-    } catch (error) {
-      console.error(error)
+      const json = await response.json()
+      if (response.status === 400) {
+        setError(json.errors)
+      }
+      if (response.status === 200) {
+        setData((preData) => [...preData, json])
+      }
+    } catch (err) {
+      console.error(err)
     } finally {
       setIsLoading(false)
     }
   }
-  return {generate, isLoading, error}
+  return {data, isLoading, error, generate}
 }
 
 export default useGenerate

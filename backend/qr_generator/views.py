@@ -12,7 +12,10 @@ def generate(request: Request) -> Response:
 
     if not validator.is_valid():
         return Response(
-            validator.errors,
+            {
+                **validator.data,
+                'errors': { **validator.errors }
+            },
             status=status.HTTP_400_BAD_REQUEST
         )
 
