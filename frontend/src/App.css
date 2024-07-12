@@ -1,3 +1,5 @@
+@import 'bulma/css/bulma.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -17,17 +19,3 @@
   font-family: 'Onest Variable', sans-serif;
 }
 
-.input {
-  height: 2em;
-  width: 200px;
-}
-
-.submit {
-  height: 2em;
-  width: 200px;
-}
-
-.result {
-  width: 200px;
-  background: white;
-}

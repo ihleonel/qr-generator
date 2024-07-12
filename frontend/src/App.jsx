@@ -11,16 +11,14 @@ function App() {
   }
   return (
     <>
-      <h1 className='title'>Generate QR</h1>
+      <h1>Generate QR</h1>
       <input
-        className='input'
         type="text"
         value={payload}
         onChange={e => setPayload(e.target.value)}
       />
       <small>{error?.payload}</small>
       <button
-        className='submit'
         onClick={submit}
       >
         Generate
@@ -30,7 +28,6 @@ function App() {
       }
       {data !== null &&
         <img
-          className='result'
           src={`data:image/svg+xml;base64,${data.qrcode}`}
           alt="QRCode"
           width="200"
