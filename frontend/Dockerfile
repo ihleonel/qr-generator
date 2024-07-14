@@ -4,6 +4,6 @@ WORKDIR /src
 
 COPY . /src/
 
-RUN npm ci
+RUN npm install
 
 CMD [ "npm", "run", "dev" ]

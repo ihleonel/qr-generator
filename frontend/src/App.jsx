@@ -19,6 +19,7 @@ function App() {
       />
       <small>{error?.payload}</small>
       <button
+        className='button'
         onClick={submit}
       >
         Generate
