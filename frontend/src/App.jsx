@@ -11,13 +11,14 @@ function App() {
   }
   return (
     <>
-      <h1>Generate QR</h1>
+      <h1 className='title'>Generate QR</h1>
       <input
+        className={'input ' + (error ? 'is-dnager': '')}
         type="text"
         value={payload}
         onChange={e => setPayload(e.target.value)}
       />
-      <small>{error?.payload}</small>
+      <p class="help is-danger">{error?.payload}</p>
       <button
         className='button'
         onClick={submit}

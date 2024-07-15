@@ -1,20 +1,2 @@
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-
-  color: white;
-  background: #3e3e3e;
-
-  font-family: 'Onest Variable', sans-serif;
-}
 
