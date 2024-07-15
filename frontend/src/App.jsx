@@ -13,7 +13,7 @@ function App() {
     <>
       <h1 className='title'>Generate QR</h1>
       <input
-        className={'input ' + (error ? 'is-dnager': '')}
+        className={'input ' + (error ? 'is-danger': '')}
         type="text"
         value={payload}
         onChange={e => setPayload(e.target.value)}
