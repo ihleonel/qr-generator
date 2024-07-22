@@ -9,6 +9,10 @@ function App() {
   const submit = () => {
     generate('http://localhost:8000/generate', payload)
   }
+
+  const reset = () => {
+    window.location = ''
+  }
   return (
     <>
       <h1 className='title'>Generate QR</h1>
@@ -18,7 +22,13 @@ function App() {
         value={payload}
         onChange={e => setPayload(e.target.value)}
       />
-      <p class="help is-danger">{error?.payload}</p>
+      <p className="help is-danger">{error?.payload}</p>
+      <button
+        className='button'
+        onClick={reset}
+      >
+        Reset
+      </button>
       <button
         className='button'
         onClick={submit}
