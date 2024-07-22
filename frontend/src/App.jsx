@@ -30,7 +30,7 @@ function App() {
         Reset
       </button>
       <button
-        className='button'
+        className='button is-primary'
         onClick={submit}
       >
         Generate
