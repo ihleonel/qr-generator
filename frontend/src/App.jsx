@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useGenerate from './Hooks/useGenerate'
-import './App.css'
+import InputText from './Components/InputText'
 
 function App() {
   const [payload, setPayload] = useState('')
@@ -13,16 +13,16 @@ function App() {
   const reset = () => {
     window.location = ''
   }
+
+  const handleChange = e => setPayload(e.target.value)
   return (
     <>
       <h1 className='title'>Generate QR</h1>
-      <input
-        className={'input ' + (error ? 'is-danger': '')}
-        type="text"
+      <InputText
         value={payload}
-        onChange={e => setPayload(e.target.value)}
+        onChange={handleChange}
+        error={error?.payload}
       />
-      <p className="help is-danger">{error?.payload}</p>
       <button
         className='button'
         onClick={reset}
