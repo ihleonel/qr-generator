@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 function InputText({value, onChange, placeholder, error}) {
   const inputClass = () => {
     let cls = 'input'
