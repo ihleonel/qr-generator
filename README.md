@@ -9,4 +9,4 @@ Given a link or string as parameter, this page generate a QR Code.
 - [x] Add styles
 - [x] Add django
 - [x] Dockering this application
-- [ ] Feedback errors
+- [x] Feedback errors
