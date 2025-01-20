@@ -2,8 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
-from .service import Service
-from .validator import Validator
+from codes.application.service import Service
+from codes.domain.validator import Validator
 
 
 @api_view(['POST'])

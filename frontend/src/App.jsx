@@ -7,7 +7,7 @@ function App() {
   const { data, isLoading, error, generate } = useGenerate()
 
   const submit = () => {
-    generate('http://localhost:8000/generate', payload)
+    generate('http://localhost:8000/codes/generate/', payload)
   }
 
   const reset = () => {
