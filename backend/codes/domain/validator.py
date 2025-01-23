@@ -9,7 +9,7 @@ class Validator:
         self.errors: dict = dict()
 
     def is_valid(self) -> bool:
-        if self.data.get('payload', None) == None:
+        if self.data.get('payload', None) is None:
             self.errors['payload'] = 'Is null'
         elif self.data['payload'].strip() == '':
             self.errors['payload'] = 'Is empty'
