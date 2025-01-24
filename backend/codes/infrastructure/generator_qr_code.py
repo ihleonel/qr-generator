@@ -1,7 +1,8 @@
-from codes.infrastructure.generator_code import GeneratorCode
-from signo import make_qr
+from codes.domain.generator_code import GeneratorCode
+from segno import make_qr
 from segno import QRCode
 from io import BytesIO
+from base64 import b64encode
 
 
 class GeneratorQRCode(GeneratorCode):
