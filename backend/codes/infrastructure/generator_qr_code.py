@@ -1,17 +1,12 @@
-from segno import make_qr
+from codes.infrastructure.generator_code import GeneratorCode
+from signo import make_qr
 from segno import QRCode
 from io import BytesIO
-from base64 import b64encode
 
 
-class Service:
-    def __init__(self, generator_code: GeneratorCode) -> None:
-        self.generator_code = generator_code
+class GeneratorQRCode(GeneratorCode):
 
-    def excecute(self, data: dict) -> bytes:
-        return self.generator_code.make_code(data)
-
-    def __call__(self, data: dict) -> bytes:
+    def make_code(self, data: str) -> bytes:
         qrcode: QRCode = make_qr(data['payload'])
         buffer = BytesIO()
         qrcode.save(out=buffer, kind='svg', border=0)
