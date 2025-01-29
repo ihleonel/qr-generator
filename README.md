@@ -10,3 +10,4 @@ Given a link or string as parameter, this page generate a QR Code.
 - [x] Add django
 - [x] Dockering this application
 - [x] Feedback errors
+- [ ] Apply clean architecture
