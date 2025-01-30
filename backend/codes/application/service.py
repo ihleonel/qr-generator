@@ -1,4 +1,4 @@
-from codes.domain.generator_code import GeneratorCode
+from backend.codes.domain.generator_code import GeneratorCode
 
 
 class Service:
