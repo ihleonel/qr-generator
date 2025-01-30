@@ -16,13 +16,13 @@ def generate(request: Request) -> Response:
         return Response(
             {
                 **validator.data,
-                'errors': { **validator.errors }
+                'errors': {**validator.errors}
             },
             status=status.HTTP_400_BAD_REQUEST
         )
 
     generator_code: GeneratorCode = GeneratorQRCode()
     service: Service = Service(generator_code)
-    base64_data: bytes = service(validator.valid)
+    base64_data: bytes = service.execute(validator.valid)
 
     return Response({'qrcode': base64_data}, status=status.HTTP_201_CREATED)
