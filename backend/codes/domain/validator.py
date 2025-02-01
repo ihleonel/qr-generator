@@ -1,10 +1,7 @@
-from rest_framework.request import Request
-
-
 class Validator:
 
-    def __init__(self, request: Request) -> None:
-        self.data: dict = request.data
+    def __init__(self, data: dict) -> None:
+        self.data: dict = data
         self.valid: dict = dict()
         self.errors: dict = dict()
 
