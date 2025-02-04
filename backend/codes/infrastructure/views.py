@@ -3,26 +3,30 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework import status
 from codes.application.service import Service
-from codes.domain.validator import Validator
 from codes.infrastructure.generator_qr_code import GeneratorQRCode
 from codes.domain.generator_code import GeneratorCode
+from backend.commons.domain.validation_error import ValidationError
 
 
 @api_view(['POST'])
 def generate(request: Request) -> Response:
-    validator = Validator(request)
+    data = request.data
+    generator_code: GeneratorCode = GeneratorQRCode()
+    service: Service = Service(generator_code)
 
-    if not validator.is_valid():
+    try:
+        base64_data: bytes = service.execute(data)
+
+        return Response(
+            data={'qrcode': base64_data},
+            status=status.HTTP_201_CREATED
+        )
+
+    except ValidationError as validation:
         return Response(
             {
-                **validator.data,
-                'errors': {**validator.errors}
+                **data,
+                'errors': {**validation.errors}
             },
             status=status.HTTP_400_BAD_REQUEST
         )
-
-    generator_code: GeneratorCode = GeneratorQRCode()
-    service: Service = Service(generator_code)
-    base64_data: bytes = service.execute(validator.valid)
-
-    return Response({'qrcode': base64_data}, status=status.HTTP_201_CREATED)

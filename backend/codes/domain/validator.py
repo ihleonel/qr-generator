@@ -5,17 +5,17 @@ class Validator:
         self.valid: dict = dict()
         self.errors: dict = dict()
 
+    def validate(self) -> bool:
+        self.validate_payload(self.data.get('payload', None))
+
     def is_valid(self) -> bool:
-        if self.data.get('payload', None) is None:
-            self.errors['payload'] = 'Is null'
-        elif self.data['payload'].strip() == '':
-            self.errors['payload'] = 'Is empty'
-        elif len(self.data['payload'].strip()) > 2953:
-            self.errors['payload'] = 'Is too long'
-
-        self.valid['payload'] = self.data['payload']
-
         return len(self.errors) == 0
 
-    def validate_payload(self, payload: str) -> str:
-        return False
+    def validate_payload(self, payload: str) -> dict:
+        self.errors = dict()
+        if payload is None:
+            self.errors['payload'] = 'Is null'
+        elif payload.strip() == '':
+            self.errors['payload'] = 'Is empty'
+        elif len(payload.strip()) > 2953:
+            self.errors['payload'] = 'Is too long'
