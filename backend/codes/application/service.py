@@ -13,4 +13,6 @@ class Service:
         if not self.generate_code_validator.is_valid():
             raise ValidationError(self.generate_code_validator.errors)
 
-        return self.generator_code.make_code(self.generate_code_validator.valid['payload'])
+        return self.generator_code.make_code(
+            self.generate_code_validator.valid['payload']
+        )
