@@ -1,12 +1,14 @@
 class Validator:
 
-    def __init__(self, data: dict) -> None:
-        self.data: dict = data
+    def __init__(self) -> None:
         self.valid: dict = dict()
         self.errors: dict = dict()
 
-    def validate(self) -> bool:
-        self.validate_payload(self.data.get('payload', None))
+    def validate(self, data: dict) -> bool:
+        self.validate_payload(data.get('payload', None))
+
+        if self.is_valid():
+            self.valid['payload'] = data['payload']
 
     def is_valid(self) -> bool:
         return len(self.errors) == 0
