@@ -1,6 +1,7 @@
 from unittest import TestCase
 from backend.codes.application.service import Service
 from backend.tests.codes.fakers.generator_fake_code import GeneratorFakeCode
+from backend.commons.domain.validation_error import ValidationError
 
 
 class TestGenerateQr(TestCase):
@@ -11,10 +12,27 @@ class TestGenerateQr(TestCase):
         self.assertEqual(type(result), bytes)
         self.assertTrue(True)
 
-    def test_should_not_generate_qr_if_invalid_payload(self):
+    def test_should_not_generate_qr_when_payload_is_None(self):
         generator_fake_code = GeneratorFakeCode()
         service = Service(generator_fake_code)
-        with self.assertRaises(ValueError) as context:
-            service.execute({'payload': 'invalid_payload'})
+        with self.assertRaises(ValidationError) as context:
+            service.execute({'payload': None})
 
-        self.assertEqual(str(context.exception), 'Invalid payload')
+            self.assertEqual(context.errors['payload'], 'Is null')
+
+    def test_should_not_generate_qr_when_payload_is_empty(self):
+        generator_fake_code = GeneratorFakeCode()
+        service = Service(generator_fake_code)
+        with self.assertRaises(ValidationError) as context:
+            service.execute({'payload': ''})
+
+            self.assertEqual(context.errors['payload'], 'Is empty')
+
+    def test_should_not_generate_qr_when_payload_is_too_long(self):
+        generator_fake_code = GeneratorFakeCode()
+        service = Service(generator_fake_code)
+        with self.assertRaises(ValidationError) as context:
+            service.execute({'payload': 'a' * 2954})
+
+            self.assertEqual(context.errors['payload'], 'Is too long')
+
