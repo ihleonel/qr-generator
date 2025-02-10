@@ -5,7 +5,7 @@ from rest_framework import status
 from codes.application.generate_code import GenerateCode
 from codes.infrastructure.generator_qr_code import GeneratorQRCode
 from codes.domain.generator_code import GeneratorCode
-from backend.commons.domain.validation_error import ValidationError
+from commons.domain.validation_error import ValidationError
 
 
 @api_view(['POST'])

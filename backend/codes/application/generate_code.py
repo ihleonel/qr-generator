@@ -1,6 +1,6 @@
-from backend.codes.domain.generator_code import GeneratorCode
-from backend.commons.domain.validation_error import ValidationError
-from backend.codes.domain.validator import Validator
+from codes.domain.generator_code import GeneratorCode
+from codes.domain.validator import Validator
+from commons.domain.validation_error import ValidationError
 
 
 class GenerateCode:

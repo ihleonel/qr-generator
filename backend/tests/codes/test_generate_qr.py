@@ -1,7 +1,7 @@
 from unittest import TestCase
-from backend.codes.application.generate_code import GenerateCode as Service
-from backend.tests.codes.fakers.generator_fake_code import GeneratorFakeCode
-from backend.commons.domain.validation_error import ValidationError
+from codes.application.generate_code import GenerateCode as Service
+from commons.domain.validation_error import ValidationError
+from tests.codes.fakers.generator_fake_code import GeneratorFakeCode
 
 
 class TestGenerateQr(TestCase):
