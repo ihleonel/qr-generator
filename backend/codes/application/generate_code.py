@@ -3,7 +3,7 @@ from backend.commons.domain.validation_error import ValidationError
 from backend.codes.domain.validator import Validator
 
 
-class Service:
+class GenerateCode:
     def __init__(self, generator_code: GeneratorCode) -> None:
         self.generate_code_validator = Validator()
         self.generator_code = generator_code
