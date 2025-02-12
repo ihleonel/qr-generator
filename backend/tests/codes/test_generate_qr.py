@@ -10,7 +10,6 @@ class TestGenerateQr(TestCase):
         service = Service(generator_fake_code)
         result: bytes = service.execute({'payload': 'https://www.google.com'})
         self.assertEqual(type(result), bytes)
-        self.assertTrue(True)
 
     def test_should_not_generate_qr_when_payload_is_None(self):
         generator_fake_code = GeneratorFakeCode()

@@ -8,7 +8,7 @@ from base64 import b64encode
 class GeneratorQRCode(GeneratorCode):
 
     def make_code(self, data: str) -> bytes:
-        qrcode: QRCode = make_qr(data['payload'])
+        qrcode: QRCode = make_qr(data)
         buffer = BytesIO()
         qrcode.save(out=buffer, kind='svg', border=0)
         buffer.seek(0)
