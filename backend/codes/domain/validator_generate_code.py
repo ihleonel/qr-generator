@@ -1,4 +1,4 @@
-class Validator:
+class ValidatorGenerateCode:
 
     def __init__(self) -> None:
         self.valid: dict = dict()

@@ -1,5 +1,5 @@
 from codes.domain.generator_code import GeneratorCode
-from codes.domain.validator import Validator
+from codes.domain.validator_generate_code import ValidatorGenerateCode as Validator
 from commons.domain.validation_error import ValidationError
 
 
